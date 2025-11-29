@@ -1,0 +1,64 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>URL Redirect Tool</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        input[type="text"] { width: 100%; padding: 10px; margin-bottom: 10px; }
+        button { padding: 10px 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter a URL to Redirect</h1>
+        <p>Type or paste any URL into the box below and click the button to visit it.</p>
+        <input type="text" id="urlInput" placeholder="
+Use code with caution.
+
+html
+https://example.com
+Use code with caution.
+
+html
+" onkeydown="if(event.key === 'Enter') redirectUser()">
+        <button onclick="redirectUser()">Go</button>
+        <p>
+            Alternatively, you can append your desired URL to this page's URL as a query parameter (e.g., `?url=
+Use code with caution.
+
+html
+https://example.com
+Use code with caution.
+
+html
+`).
+        </p>
+    </div>
+
+    <script>
+        function redirectUser() {
+            var url = document.getElementById('urlInput').value;
+            if (url) {
+                // Ensure the URL has a protocol
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'https://' + url;
+                }
+                window.location.href = url;
+            }
+        }
+
+        // Check for URL in query parameter on load
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const urlFromParam = params.get('url');
+            if (urlFromParam) {
+                // Automatically redirect if URL param is present
+                window.location.href = urlFromParam;
+            }
+        }
+    </script>
+</body>
+</html>
