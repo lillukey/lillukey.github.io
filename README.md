@@ -1,1 +1,1 @@
-[The link](https://lillukey.github.io/)
+[Click on this to go to the website](https://lillukey.github.io/)
